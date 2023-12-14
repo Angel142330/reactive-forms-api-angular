@@ -1,0 +1,31 @@
+<h1 class="mt-5 mb-5 text-2xl text-center text-white ">List of Products</h1>
+<div class="flex flex-col ">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Product</th>
+                <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Price</th>
+                <!-- <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Description</th> -->
+                <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Details</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            @for (producto of productList; track $index) {
+                <tr>
+                <td class="px-6 py-4 whitespace-nowrap">{{producto.title | uppercase}}</td>
+                <td class="px-6 py-4 whitespace-nowrap" [ngClass]="{'text-red-400 font-bold': producto.price >= 200}" >{{producto.price | currency:'EUR'}} </td>
+                <!-- <td class="px-6 py-4 whitespace-nowrap">{{producto.description}}</td> -->
+                <td class="px-6 py-4 whitespace-nowrap"><button class="px-2 py-1 font-bold text-white bg-blue-500 rounded hover:bg-blue-700" (click)="navegate(producto.id)">View Detail</button></td>
+                <!-- [routerLink]="['/products', producto.id]" usar esto o la función de navegate con el Router  -->
+              </tr>
+            }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

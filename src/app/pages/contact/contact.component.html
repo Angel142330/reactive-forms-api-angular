@@ -1,0 +1,42 @@
+<div class="p-9">
+
+    <form [formGroup]="contactForm" (ngSubmit)="enviar($event)" class="space-y-6">
+        <div class="mb-3 p-4 ">
+            <label for="exampleFormControlInput1" class="block text-sm font-medium text-gray-700">Email address</label>
+            <input type="email" formControlName="email"
+                [ngClass]="{' border-red-500':hasErrors('email', 'required') || hasErrors('email','email')}"
+                class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+
+        @if (hasErrors('email','email')) {
+        <p class="text-xs italic text-red-500">Por favor, introduce un correo electrónico válido.</p>
+        }@else if (hasErrors('email','required')) {
+        <p class="text-xs italic text-red-500">Email Requerido.</p>
+        }
+
+        <div class="mb-3 p-4">
+            <label for="exampleFormControlTextarea1" class="block text-sm font-medium text-gray-700">Example
+                textarea</label>
+            <textarea formControlName="message"
+                [ngClass]="{' border-red-500':hasErrors('message', 'required') || hasErrors('message','minlength')}"
+                class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        @if (hasErrors('message', 'minlength')) {
+        <p class="text-xs italic text-red-500">Por favor, completa este campo.</p>
+
+        }@else if (hasErrors('message','required')) {
+        <p class="text-xs italic text-red-500">Por favor, el mensaje debe ser mínimo 10 caracteres.</p>
+        }
+
+
+        <div class="ms-4">
+            <button type="submit" class="bg-orange-500 rounded p-3 text-white">Send</button>
+
+        </div>
+
+    </form>
+
+</div>

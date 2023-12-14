@@ -1,0 +1,25 @@
+<!-- 
+<ng-container *ngIf="!loading" class="flex flex-col items-center max-w-sm p-6 mx-auto space-y-4 bg-white shadow-md rounded-xl">
+    <img src="{{product?.image}}" alt="{{product?.title}}" class="object-scale-down w-24 h-auto">
+    <h1 class="text-xl font-bold text-purple-600">Product : {{product?.title | uppercase}}</h1>
+    <h2 class="text-lg text-purple-500">Price : {{product?.price | currency:'EUR'}}</h2>
+    <h3 *ngIf="product?.description" class="text-gray-500">Description {{product?.description }}</h3>
+</ng-container>
+
+<ng-container *ngIf="loading" class="text-5xl text-red-800"> Loading.... </ng-container> -->
+
+
+@if (!loading) {
+    <div class="flex flex-col items-center max-w-sm p-6 mx-auto space-y-4 bg-white shadow-md rounded-xl">
+        <img src="{{product?.image}}" alt="{{product?.title}}" class="object-scale-down w-24 h-auto">
+        <h1 class="text-xl font-bold text-purple-600">Product : {{product?.title | uppercase}}</h1>
+        <h2 class="text-lg text-purple-500" [ngStyle]="{'color': color}">Price : {{product?.price | currency:'EUR'}}</h2>
+        <h3 *ngIf="product?.description" class="text-gray-500">Description {{product?.description }}</h3>
+
+    </div>
+
+
+
+}@else{
+    <h1 class="text-5xl text-red-800">Loading.... </h1>
+}
