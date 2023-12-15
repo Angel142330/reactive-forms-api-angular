@@ -1,11 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupName, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+
+
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatInputModule, MatFormFieldModule, MatButtonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
@@ -33,8 +38,8 @@ export class ContactComponent implements OnInit {
     console.log(this.contactForm.value);
   }
 
-   //! Creamos un metodo que nos permite saber si un campo tiene un error y si fue tocado 
-   hasErrors(controlName: string, errorType: string) {
+  //! Creamos un metodo que nos permite saber si un campo tiene un error y si fue tocado 
+  hasErrors(controlName: string, errorType: string) {
     return this.contactForm.get(controlName)?.hasError(errorType) && this.contactForm.get(controlName)?.touched;
   }
 }

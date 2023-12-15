@@ -3,11 +3,12 @@ import { ApiService } from '../../services/api.service';
 import { IProduct } from '../../models/product.model';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-products-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatCardModule],
   templateUrl: './products-detail.component.html',
   styleUrl: './products-detail.component.css'
 })
